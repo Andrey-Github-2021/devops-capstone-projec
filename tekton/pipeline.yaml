@@ -53,7 +53,8 @@ spec:
 
     - name: tests
       workspaces:
-        - name: source        
+        - name: source 
+          workspace: pipeline-workspace       
       taskRef:
         name: nose
       params:
