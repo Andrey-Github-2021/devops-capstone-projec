@@ -61,11 +61,11 @@ spec:
     - name: source
   params:
     - name: args
-      description: args to nose
+      description: Arguments to pass to nose
       type: string
       default: "-v"
     - name: database_uri
-      description: test require a test database
+      description: Database connection string
       type: string
       default: "sqlite:///test.db"
   steps:
@@ -78,8 +78,10 @@ spec:
       script: |
         #!/bin/bash
         set -e
+
         echo "***** Installing dependencies *****"
         python -m pip install --upgrade pip wheel
         pip install -qr requirements.txt
+
         echo "***** Running nosetests with: $(params.args)"
         nosetests $(params.args)
